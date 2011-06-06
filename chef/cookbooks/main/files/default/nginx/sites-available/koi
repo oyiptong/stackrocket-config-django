@@ -1,0 +1,47 @@
+server {
+        listen 80;
+        server_name $hostname localhost 127.0.0.1;
+        client_max_body_size 2m;
+
+        access_log /koi/log/nginx/webapp.access.log;
+        error_log /koi/log/nginx/webapp.error.log;
+
+        keepalive_timeout 70;
+
+        location / {
+		include uwsgi_params;
+		uwsgi_pass 127.0.0.1:3082;
+		uwsgi_param UWSGI_SCRIPT wsgi;
+                uwsgi_param REMOTE_ADDR 127.0.0.1;
+        }
+
+	location /robots.txt {
+		root /u/apps/koiweb/current/site_media;
+	}
+
+        location ^~ /admin/media {
+		root /usr/local/lib/python2.6/dist-packages/django/contrib/admin;
+                if (-f $request_filename) {
+                    expires max;
+                    break;
+                }
+        }
+
+        location ^~ /media {
+                rewrite ^/media/(.*)/(.*)\.[0-9]+\.(css|js|jpe?g|gif|png|swf)$ /media/$1/$2.$3 last;
+                root /u/apps/koiweb/current/koiweb;
+                if (-f $request_filename) {
+                    expires max;
+                    break;
+                }
+        }
+
+        location ^~ /files {
+                #internal;
+                root /u/media/koiweb/;
+        }
+	error_page 500 502 503 504  /maintenance.html;
+	location = /maintenance.html {
+		root /var/www/maintenance;
+	}
+}
