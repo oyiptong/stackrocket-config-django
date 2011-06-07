@@ -10,7 +10,7 @@ server {
 
         location / {
 		include uwsgi_params;
-		uwsgi_pass 127.0.0.1:3082;
+		uwsgi_pass 127.0.0.1:3031;
 		uwsgi_param UWSGI_SCRIPT wsgi;
                 uwsgi_param REMOTE_ADDR 127.0.0.1;
         }

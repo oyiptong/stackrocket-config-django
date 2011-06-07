@@ -13,14 +13,14 @@ cookbook_file('/etc/nginx/nginx.conf') do
   backup false
   group 'root'
   owner 'root'
-  mode '0755'
+  mode '0644'
   source 'nginx/nginx.conf'
 end
 cookbook_file('/etc/nginx/sites-available/koi') do
   backup false
   group 'root'
   owner 'root'
-  mode '0755'
+  mode '0644'
   source 'nginx/sites-available/koi'
 end
 link('/etc/nginx/sites-enabled/koi') do
