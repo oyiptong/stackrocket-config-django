@@ -15,7 +15,7 @@ directory "/koi/log/supervisor" do
     mode 0700
 end
 
-execute "restarting supersord" do
+execute "restarting supervisord" do
   command "supervisorctl reload"  
   only_if "ps auwx | grep supervisord | grep -v grep"
 end

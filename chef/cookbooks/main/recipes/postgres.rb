@@ -20,18 +20,18 @@ end
 
 unless File.exists? "/tmp/db_init.sql"
   
-  cookbook_file "/tmp/db_init.sql" do
-    source "postgres/db_init.sql"
-    mode 0640
-    owner "postgres"
-    group "postgres"
+  cookbook_file('/tmp/db_init.sql') do
+    source 'postgres/db_init.sql'
+    mode '0640'
+    owner 'postgres'
+    group 'postgres'
   end
 
-  execute "initialized db" do
-    command "sudo -u postgres psql -f /tmp/db_init.sql"
+  execute('initialized db') do
+    command('sudo -u postgres psql -f /tmp/db_init.sql')
   end
 end
 
-service "postgresql" do
+service('postgresql') do
   action :restart
 end    

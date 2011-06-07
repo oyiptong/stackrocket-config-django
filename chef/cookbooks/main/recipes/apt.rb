@@ -12,7 +12,7 @@ execute('add-apt-repository ppa:uwsgi/release')
 cookbook_file('/etc/apt/sources.list') do
 	backup false
 	group 'root'
-	mode '0644'
+	mode '0755'
 	owner 'root'
 	source 'etc/apt/sources.list'
 end
