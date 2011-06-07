@@ -6,7 +6,7 @@ cookbook_file('/etc/memcached.conf') do
 	group 'root'
 	mode '0644'
 	owner 'root'
-	source 'etc/memcached.conf'
+	source 'memcached/memcached.conf'
 end
 service "memcached" do
   action :restart
