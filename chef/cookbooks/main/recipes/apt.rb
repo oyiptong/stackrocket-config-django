@@ -10,13 +10,6 @@ directory('/etc/apt/apt.conf.d') do
 	owner 'root'
 	recursive true
 end
-cookbook_file('/etc/apt/apt.conf.d/00trustcdrom') do
-	backup false
-	group 'root'
-	mode '0644'
-	owner 'root'
-	source 'etc/apt/apt.conf.d/00trustcdrom'
-end
 cookbook_file('/etc/apt/secring.gpg') do
 	backup false
 	group 'root'
