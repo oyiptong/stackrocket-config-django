@@ -32,6 +32,6 @@ unless File.exists? "/tmp/db_init.sql"
   end
 end
 
-service "postgresql-" + postgres_version do
+service "postgresql" do
   action :restart
 end    
