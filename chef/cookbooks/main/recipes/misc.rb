@@ -13,9 +13,9 @@ template('/etc/hosts') do
 	owner 'root'
 	source 'etc/hosts'
 end
-execute("hostname #{node[:name]}")
-execute("echo '#{node[:name]}' > /etc/hostname")
-execute("sysctl kernel.hostname=#{node[:name]}")
+execute("hostname #{node[:koi][:app_name]}")
+execute("echo '#{node[:koi][:app_name]}' > /etc/hostname")
+execute("sysctl kernel.hostname=#{node[:koi][:app_name]}")
 execute('make-ssl-cert generate-default-snakeoil --force-overwrite')
 execute('/bin/rm /etc/ssh/ssh_host_*')
 execute('dpkg-reconfigure openssh-server')
