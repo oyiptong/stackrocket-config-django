@@ -16,7 +16,7 @@ server {
         }
 
 	location /robots.txt {
-		root /u/apps/koiweb/current/site_media;
+		root /koi/apps/<%= node[:koi][:app_name] %>;
 	}
 
         location ^~ /admin/media {
@@ -29,7 +29,7 @@ server {
 
         location ^~ /media {
                 rewrite ^/media/(.*)/(.*)\.[0-9]+\.(css|js|jpe?g|gif|png|swf)$ /media/$1/$2.$3 last;
-                root /u/apps/koiweb/current/koiweb;
+                root /koi/apps/<%= node[:koi][:app_name] %>;
                 if (-f $request_filename) {
                     expires max;
                     break;
@@ -38,7 +38,7 @@ server {
 
         location ^~ /files {
                 #internal;
-                root /u/media/koiweb/;
+                root /koi/media/<%= node[:koi][:app_name] %>/;
         }
 	error_page 500 502 503 504  /maintenance.html;
 	location = /maintenance.html {
