@@ -1,7 +1,7 @@
 # install supervisor
 execute('pip install supervisor==3.0a10')
 
-cookbook_file "/etc/supervisord.conf" do
+template "/etc/supervisord.conf" do
   source "supervisor/supervisord.conf"
   mode 0640
   owner "root"

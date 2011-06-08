@@ -1,3 +1,4 @@
 {
-  "run_list": ["main::misc", "main::apt", "main::postgres", "main::django", "main::nginx", "main::supervisor"]
+  "run_list": ["main::misc", "main::apt", "main::postgres", "main::django", "main::nginx", "main::supervisor"],
+  "name": "koi"
 }
