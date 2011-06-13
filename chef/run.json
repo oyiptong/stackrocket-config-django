@@ -1,0 +1,4 @@
+{
+  "run_list": ["run::apt", "run::supervisor"],
+  "koi": { "app_name" : "koi" }
+}
